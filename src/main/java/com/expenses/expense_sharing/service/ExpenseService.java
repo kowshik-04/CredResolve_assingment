@@ -137,7 +137,9 @@ public class ExpenseService {
                 .findByGroupIdAndUserId(group.getId(), user.getId())
                 .orElse(new Balance(null, group, user, 0L));
 
-        balance.setAmountPaise(balance.getAmountPaise() + deltaPaise);
+        Long current = balance.getAmountPaise() == null ? 0L : balance.getAmountPaise();
+        
+        balance.setAmountPaise(current + deltaPaise);
 
         balanceRepository.save(balance);
     }

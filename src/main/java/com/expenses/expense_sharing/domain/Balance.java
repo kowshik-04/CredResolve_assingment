@@ -32,5 +32,5 @@ public class Balance {
     private User user;
 
     // 🔥 MONEY IN PAISE
-    private Long amountPaise;
+    private Long amountPaise = 0L;
 }

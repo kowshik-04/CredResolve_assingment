@@ -1,12 +1,29 @@
-version: '3.8'
+version: "3.9"
 
 services:
   postgres:
-    image: postgres:15
-    container_name: expense-db
+    image: postgres:16
+    container_name: expense-postgres
     environment:
-      POSTGRES_DB: expense_sharing
+      POSTGRES_DB: expense_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: expense-backend
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/expense_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:

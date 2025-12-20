@@ -28,10 +28,12 @@ public class BalanceService {
         Queue<Map.Entry<User, Long>> debtors = new LinkedList<>();
 
         for (Balance b : balances) {
-            if (b.getAmountPaise() > 0) {
-                creditors.add(Map.entry(b.getUser(), b.getAmountPaise()));
-            } else if (b.getAmountPaise() < 0) {
-                debtors.add(Map.entry(b.getUser(), -b.getAmountPaise()));
+            long amount = b.getAmountPaise() == null ? 0L : b.getAmountPaise();
+
+            if (amount > 0) {
+                creditors.add(Map.entry(b.getUser(), amount));
+            } else if (amount < 0) {
+                debtors.add(Map.entry(b.getUser(), -amount));
             }
         }
 

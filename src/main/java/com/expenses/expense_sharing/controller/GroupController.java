@@ -24,12 +24,18 @@ public class GroupController {
 
     @PostMapping
     public Group create(@RequestBody CreateGroupRequest request) {
+
+        if (request.getCreatedByUserId() == null) {
+            throw new RuntimeException("createdByUserId is required");
+        }
+
         return groupService.createGroup(
                 request.getName(),
-                request.getCreatedBy(),
+                request.getCreatedByUserId(),
                 request.getMemberIds()
         );
     }
+
     @GetMapping
     public List<Group> getAllGroups() {
         return groupService.getAllGroups();
@@ -51,10 +57,9 @@ public class GroupController {
     
 
 }
-
 @Data
 class CreateGroupRequest {
     private String name;
-    private Long createdBy;
+    private Long createdByUserId;
     private List<Long> memberIds;
 }
