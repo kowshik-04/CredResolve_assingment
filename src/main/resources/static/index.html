@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expense Sharing App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  💸 Expense Sharing App
+</header>
+
+<main>
+
+  <section class="card">
+    <h3>Select User</h3>
+    <select id="userSelect"></select>
+  </section>
+
+  <section class="card">
+    <h3>Your Groups</h3>
+    <ul id="groupsList"></ul>
+
+    <input id="newGroupName" placeholder="New group name" />
+    <button onclick="createGroup()">Create Group</button>
+  </section>
+
+  <section class="card">
+    <h3>Group Members</h3>
+    <ul id="membersList"></ul>
+  </section>
+
+  <section class="card">
+    <h3>Expenses</h3>
+    <ul id="expensesList"></ul>
+
+    <input id="desc" placeholder="Description" />
+    <input id="amount" placeholder="Amount" type="number" />
+    <select id="splitType">
+      <option value="EQUAL">EQUAL</option>
+      <option value="EXACT">EXACT</option>
+      <option value="PERCENTAGE">PERCENTAGE</option>
+    </select>
+    <button onclick="addExpense()">Add Expense</button>
+  </section>
+
+  <section class="card">
+    <h3>Balances</h3>
+    <ul id="balancesList"></ul>
+  </section>
+
+  <section class="card">
+    <h3>Settlement Suggestions</h3>
+    <ul id="settlementsList"></ul>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

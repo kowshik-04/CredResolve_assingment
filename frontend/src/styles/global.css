@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(to bottom right, #f9fafb, #eef2ff);
+}
+
+.input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.75rem;
+  border: 1px solid #ddd;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #111827, #1f2937);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
